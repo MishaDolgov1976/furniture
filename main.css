@@ -14,7 +14,6 @@
 html,
 body {
   min-height: 100vh;
-  overflow: hidden;
   width: 100%;
 }
 section {
@@ -25,6 +24,20 @@ section {
 /*Navbar start*/
 nav {
   z-index: 999;
+  position: fixed;
+  width: 90%;
+  max-width: 1320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 34px;
+  background-color: var(--brown-white);
+  color: var(--brown-white);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.5s ease-in-out;
+  border-bottom: 1px transparent;
+  /* z-index: 999;
   position: fixed;
   width: 90%;
   margin-top: 40px;
@@ -38,7 +51,7 @@ nav {
   background-color: var(--brown-white);
   color: var(--brown-white);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 }
 nav.sticky {
   background: var(--brown-white);
@@ -688,6 +701,254 @@ footer hr {
 
 /* Laptop and Tablet */
 @media (max-width: 1024px) {
+  .btn { display: block; }
+  nav {
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    transform: none;
+    padding: 15px 30px;
+  }
+  nav .brand { margin-right: auto; }
+  nav .menu {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--brown-white);
+    flex-direction: column;
+    padding: 20px 0;
+    display: none; /* скрыто по умолчанию */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  nav .menu.active { display: flex; }
+  nav .menu a { margin: 12px 0; }
+  .btn-nav { display: none; }
+}
+
+/* --- Hero --- */
+.heropage {
+  background: url(photo/3.jpg) center/cover no-repeat;
+  width: 100%;
+  height: 100vh; /* фиксируем высоту экрана */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.heropage-headlines {
+  text-align: center;
+  color: white; /* если фон тёмный */
+  position: relative;
+  z-index: 2;
+}
+
+.slogan-1 h4 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.slogan-1 hr {
+  flex: 1;
+  border: none;
+  height: 1px;
+  background-color: white;
+}
+
+.slogan-2 h1 {
+  font: italic 500 65px var(--accent-font);
+  line-height: 1.1;
+}
+
+.slogan-2 p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.btn-heropage {
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  width: 280px;
+  height: 51px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  transition: all 0.3s;
+}
+
+.btn-heropage:hover {
+  background-color: white;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* --- New Arrivals --- */
+.new-arrivals {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* вместо border-left/right лучше использовать gap */
+  padding: 60px 20px;
+  border-top: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
+}
+
+.new-arrivals-box {
+  width: 470px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.new-arrivals-box img {
+  width: 80%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* --- About --- */
+.about {
+  padding: 60px;
+}
+
+.about-title h1 {
+  font: italic 500 76px/1 var(--accent-font);
+}
+
+.about-box {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-box { flex-direction: row; }
+}
+
+/* --- Projects --- */
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+.project-box {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 500px;
+}
+
+/* --- FAQ / Accordion --- */
+.faq {
+  padding: 60px 40px;
+}
+
+.accordion-item {
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  overflow: hidden;
+}
+
+.accordion-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.accordion-link h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  background-color: var(--primary);
+  color: var(--brown-white);
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.answer p {
+  padding: 2rem;
+  margin: 0;
+  font-size: 18px;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--secondary);
+  color: var(--brown-white);
+  padding: 60px;
+}
+
+.footer-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.newsletter form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--brown-white);
+  padding-bottom: 16px;
+}
+
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--brown-white);
+  padding: 8px 0;
+}
+
+.link-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.social a {
+  color: var(--brown-white);
+  text-decoration: none;
+}
+
+/* --- Mobile breakpoints (исправляем оборванный код) --- */
+@media (max-width: 768px) {
+  .slogan-2 h1 { font-size: 36px; line-height: 1.2; }
+  .new-arrivals { flex-direction: column; }
+  .new-arrivals-box { width: 100%; }
+  .about-title h1 { font-size: 48px; }
+  .footer-headline h3 { font-size: 32px; }
+}
+
+
+
+
+
+
+
+
+/* @media (max-width: 1024px) {
   nav {
     padding: 20px 50px;
     margin-top: 0px;
@@ -1013,7 +1274,7 @@ footer hr {
   .product-page img {
     height: 260px;
   }
-}
+} */
 /*FAQ*/
 .faq {
   padding: 20px;
